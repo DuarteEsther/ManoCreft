@@ -22,11 +22,11 @@ public class World {
 	public static int CICLO = Entity.rand.nextInt(2);  //OU COMEÇA DIA OU NOITE
 	
 	public World(){
-		String[] tilesTypes = {"grama", "terra" ,"areia", "neve", " "};
-		WIDTH = 200;
-		HEIGHT =  200;                           //ame.HEIGHT / 16;
-		int divisao = WIDTH/tilesTypes.length;
+		String[] tilesTypes = {"grama", "terra" ,"areia", "neve"};
+		WIDTH = 500;
+		HEIGHT =  200;    //ame.HEIGHT / 16;
 		//DIVIDOR DO MAPA 
+		int divisao = WIDTH/tilesTypes.length;
 		tiles = new Tile[WIDTH*HEIGHT];
 		for(int xx = 0; xx < WIDTH; xx++) {
 			int initialHeight = Entity.rand.nextInt(12 - 8) +8;
@@ -47,7 +47,7 @@ public class World {
 							tiles[xx+yy*WIDTH] = new WallTile(xx*16,yy*16,Tile.TILE_NEVE);
 						}
 					}else {
-					tiles[xx+yy*WIDTH] = new FloorTile(xx*16,yy*16,Tile.TILE_AR);
+						tiles[xx+yy*WIDTH] = new FloorTile(xx*16,yy*16,Tile.TILE_AR);
 					}
 				}
 			}
@@ -78,7 +78,7 @@ public class World {
 	
 
 	public static void restartGame(){
-		//TODO: Aplicar m�todo para reiniciar o jogo corretamente.
+	
 		return;
 	}
 	

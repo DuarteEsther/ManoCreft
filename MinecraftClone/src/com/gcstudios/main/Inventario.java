@@ -20,7 +20,7 @@ public int mx,my;
 public String[] items = {"grama", "terra", "neve", "areia","ar", ""};
 
 public int initialPosition = ((Game.WIDTH * Game.SCALE) / 2) - ( (items.length*inventoryBoxSize) / 2);
-private int i;
+
 
 	public void tick() {
 		if(isPressed) {
@@ -46,25 +46,25 @@ private int i;
 					World.tiles[tilex+tiley*World.WIDTH] = new WallTile(tilex*16,tiley*16,Tile.TILE_TERRA);
 				}else if(items[selected]== "ar") {
 					World.tiles[tilex+tiley*World.WIDTH] = new FloorTile(tilex*16,tiley*16,Tile.TILE_AR);
-			}else if(items[selected]== "neve") {
-				World.tiles[tilex+tiley*World.WIDTH] = new WallTile(tilex*16,tiley*16,Tile.TILE_NEVE);
-			}else if(items[selected]== "areia") {
-				World.tiles[tilex+tiley*World.WIDTH] = new WallTile(tilex*16,tiley*16,Tile.TILE_AREIA);
-			}
+				}else if(items[selected]== "neve") {
+					World.tiles[tilex+tiley*World.WIDTH] = new WallTile(tilex*16,tiley*16,Tile.TILE_NEVE);
+				}else if(items[selected]== "areia") {
+					World.tiles[tilex+tiley*World.WIDTH] = new WallTile(tilex*16,tiley*16,Tile.TILE_AREIA);
+				}
 				
 				if(World.isFree(Game.player.getX(),Game.player.getY()) == false) {
 					World.tiles[tilex+tiley*World.WIDTH] = new FloorTile(tilex*16,tiley*16,Tile.TILE_AR);
 				}
+			}
 		}
 	}
-}
 	
 	public void render(Graphics g) {
 		for(int i = 0; i < items.length; i ++) {		
 			g.setColor(Color.gray);
-			g.fillRect(initialPosition + (i*inventoryBoxSize)+1, Game.HEIGHT*Game.SCALE-inventoryBoxSize+1, inventoryBoxSize, inventoryBoxSize);
+			g.fillRect(initialPosition + (i*inventoryBoxSize)+1, Game.HEIGHT*Game.SCALE-inventoryBoxSize-1, inventoryBoxSize, inventoryBoxSize);
 			g.setColor(Color.black);
-			g.drawRect(initialPosition + (i*inventoryBoxSize), Game.HEIGHT*Game.SCALE-inventoryBoxSize, inventoryBoxSize, inventoryBoxSize);
+			g.drawRect(initialPosition + (i*inventoryBoxSize)+1, Game.HEIGHT*Game.SCALE-inventoryBoxSize-1, inventoryBoxSize, inventoryBoxSize);
 			 if(items[i] == "grama")
 			 { 
 				 
@@ -79,7 +79,7 @@ private int i;
 				 g.drawImage(Tile.TILE_NEVE,initialPosition + (i*inventoryBoxSize)+7 , Game.HEIGHT*Game.SCALE-inventoryBoxSize +7,32,32,null);
 			 }
 				 
-			 }
+			 
 			 if(selected == i) {
 				 g.setColor(Color.red);
 				 g.drawRect(initialPosition + (i*inventoryBoxSize), Game.HEIGHT*Game.SCALE-inventoryBoxSize-1, inventoryBoxSize, inventoryBoxSize);
@@ -87,6 +87,7 @@ private int i;
 		
 		}
 	}
+}
 
 
 
